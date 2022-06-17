@@ -1,0 +1,47 @@
+<%- include("header") -%>
+
+<div>
+    <div class="logo">
+        <h1>Bar Name</h1>
+    </div>
+    <div class="sticky-top category">
+        <ul class="list-group list-group-horizontal cat-list">
+        <%  catArry.forEach(item => { %>
+                <a href="<%= item.url%>">
+                    <li class="list-group-item cat-item <%= item.activ %>"><h3><%= item.name %></h3></li>
+                </a>
+        <%  }) %>
+        </ul>
+    </div>
+    <div class="container main">
+        
+		<% data.items.forEach(function(image, index) { %>
+                <div class="card menu-item ">
+                    
+                        <div class="menu-image">
+                            <img class="image card-img-top" src="data:image/<%=image.img.contentType%>;base64,
+                                <%=image.img.data.toString('base64')%>" />
+                        </div>
+                        <div class="menu-content card-body bg-secondary">
+                            <div class="d-flex flex-column justify-content-around">
+                                <h1 class="card-title text-center"><%= image.name %></h1>
+                                <h3 class="card-subtitle text-center"><%= image.price %> KM</h3>
+                            </div>
+                        </div> 
+                    
+                </div>
+		<% }) %>
+        
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<%- include("footer") -%>
