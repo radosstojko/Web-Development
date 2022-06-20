@@ -75,6 +75,7 @@ async function insertManyCategories(data){
 
 app.get('/', async (req, res) => {
     const catArry = await getAllCategories();
+    if (catArry.length === 0) res.send("No data in database pleas go to /database to insert data");
     Category.find({name: "Negazirana pića"}, (err, data) => {
         if(err) {
             console.log(err);
@@ -130,7 +131,7 @@ app.get('/category', async (req, res) => {
     })
 });
 
-//Path toinsert data to mongoDB
+//Path to insert data to mongoDB
 
 app.get('/database', async (req, res) => {
     fs.readFile("categoryData.json", (err, data) => {
